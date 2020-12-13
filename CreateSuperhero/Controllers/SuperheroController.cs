@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CreateSuperhero.Data;
 using CreateSuperhero.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,6 +11,12 @@ namespace CreateSuperhero.Controllers
 {
     public class SuperheroController : Controller
     {
+        private ApplicationDbContext _context;
+        public SuperheroController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
         // GET: SuperheroController
         public ActionResult Index()
         {
@@ -35,6 +42,8 @@ namespace CreateSuperhero.Controllers
         {
             try
             {
+                _context.Superheroes.Add(superhero);
+                _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             catch
