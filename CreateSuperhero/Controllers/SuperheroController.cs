@@ -20,12 +20,14 @@ namespace CreateSuperhero.Controllers
         // GET: SuperheroController
         public ActionResult Index()
         {
+            List<Superhero> superheroList = _context.Superheroes.ToList();
             return View();
         }
 
         // GET: SuperheroController/Details/5
         public ActionResult Details(int id)
         {
+            var superhero = _context.Superheroes.FirstOrDefault(s => s.Id == id);
             return View();
         }
 
@@ -67,7 +69,7 @@ namespace CreateSuperhero.Controllers
         {
             try
             {
-                _context.Update(superhero);  //_context.Update(superhero);
+                _context.Superheroes.Update(superhero);  //_context.Update(superhero);
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
