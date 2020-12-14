@@ -56,16 +56,18 @@ namespace CreateSuperhero.Controllers
         // GET: SuperheroController/Edit/5
         public ActionResult Edit(int id)
         {
+            var superhero = _context.Superheroes.FirstOrDefault(s => s.Id == id);
             return View();
         }
 
         // POST: SuperheroController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, Superhero superhero)
         {
             try
             {
+                ContextBoundObject.Update
                 return RedirectToAction(nameof(Index));
             }
             catch
