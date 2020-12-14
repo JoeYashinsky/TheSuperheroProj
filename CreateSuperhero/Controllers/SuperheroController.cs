@@ -20,15 +20,15 @@ namespace CreateSuperhero.Controllers
         // GET: SuperheroController
         public ActionResult Index()
         {
-            List<Superhero> superheroList = _context.Superheroes.ToList();
-            return View();
+            List<Superhero> superheroes = _context.Superheroes.ToList();
+            return View(superheroes);
         }
 
         // GET: SuperheroController/Details/5
         public ActionResult Details(int id)
         {
             var superhero = _context.Superheroes.FirstOrDefault(s => s.Id == id);
-            return View();
+            return View(superhero);
         }
 
         // GET: SuperheroController/Create
