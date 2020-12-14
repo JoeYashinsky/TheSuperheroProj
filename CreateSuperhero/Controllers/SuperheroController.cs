@@ -32,6 +32,7 @@ namespace CreateSuperhero.Controllers
         // GET: SuperheroController/Create
         public ActionResult Create()
         {
+            Superhero superhero = new Superhero();
             return View();
         }
 
