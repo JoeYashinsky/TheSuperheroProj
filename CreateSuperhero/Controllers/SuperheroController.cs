@@ -57,7 +57,7 @@ namespace CreateSuperhero.Controllers
         public ActionResult Edit(int id)
         {
             var superhero = _context.Superheroes.FirstOrDefault(s => s.Id == id);
-            return View();
+            return View(superhero);
         }
 
         // POST: SuperheroController/Edit/5
@@ -67,7 +67,7 @@ namespace CreateSuperhero.Controllers
         {
             try
             {
-                _context.Superheroes.Update(superhero);
+                _context.Update(superhero);  //_context.Update(superhero);
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
@@ -91,7 +91,7 @@ namespace CreateSuperhero.Controllers
         {
             try
             {
-                _context.Superheroes.Remove(superhero);
+                _context.Remove(superhero);   //_context.Remove(superhero);
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
